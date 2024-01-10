@@ -47,8 +47,15 @@ function createEmployee(salary: number | string): Director | Teacher {
   }
 }
 
-// Test cases
-console.log(createEmployee(200)); // Output: Teacher
-console.log(createEmployee(1000)); // Output: Director
-console.log(createEmployee('$500')); // Output: Director
+function isDirector(employee: Director | Teacher): employee is Director {
+  return (employee as Director).workDirectorTasks !== undefined;
+}
+
+function executeWork(employee: Director | Teacher): string {
+  if (isDirector(employee)) {
+    return employee.workDirectorTasks();
+  } else {
+    return employee.workTeacherTasks();
+  }
+}
 

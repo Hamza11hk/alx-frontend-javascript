@@ -1,4 +1,32 @@
 // task_1/js/main.ts
+interface Person {
+  readonly firstName: string;
+  readonly lastName: string;
+}
+
+interface Student extends Person {
+  workOnHomework(): string;
+  displayName(): string;
+}
+
+class StudentClass implements Student {
+  readonly firstName: string;
+  readonly lastName: string;
+
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  workOnHomework(): string {
+    return 'Currently working';
+  }
+
+  displayName(): string {
+    return this.firstName;
+  }
+}
+
 interface Teacher {
   readonly firstName: string;
   readonly lastName: string;
